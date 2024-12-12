@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { WeatherDataSource } from '../data-sources/weather.data-source';
 import { ReactiveFormsModule } from '@angular/forms';
-import { WeatherApiService } from '../services/weather/weather-api.service';
-import { CityGeocoderApiService } from '../services/city-finder/city-geocoder-api.service';
+import { WeatherApiService } from '../services/weather-api/weather-api.service';
+import { CityGeocoderApiService } from '../services/city-geocoder-api/city-geocoder-api.service';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { CurrentWeatherComponent } from '../current-weather/current-weather.component';
 import { ForecastComponent } from '../forecast/forecast.component';

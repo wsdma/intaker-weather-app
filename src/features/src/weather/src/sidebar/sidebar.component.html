@@ -11,7 +11,7 @@
     #inputEl
   />
   @if (control.errors && control.touched) {
-    <mat-error [innerHTML]="control.errors | formErrorText"></mat-error>
+    <mat-error [innerHTML]="control.errors | controlErrorsText"></mat-error>
   }
   <mat-autocomplete #auto="matAutocomplete">
     @for (city of cities; track city.id) {

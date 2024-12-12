@@ -1,6 +1,6 @@
 import { effect, inject, Injectable } from '@angular/core';
-import { CityGeocoderApiService } from '../services/city-finder/city-geocoder-api.service';
-import { WeatherApiService } from '../services/weather/weather-api.service';
+import { CityGeocoderApiService } from '../services/city-geocoder-api/city-geocoder-api.service';
+import { WeatherApiService } from '../services/weather-api/weather-api.service';
 import { ComponentStore } from '@ngrx/component-store';
 import { LocalStorageService } from '@app/core';
 import { catchError, EMPTY, filter, forkJoin, switchMap, tap } from 'rxjs';

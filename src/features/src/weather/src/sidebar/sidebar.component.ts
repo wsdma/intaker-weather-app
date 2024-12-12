@@ -27,7 +27,7 @@ import {
 import { debounceTime, filter } from 'rxjs';
 import { CityWeatherData } from '../interfaces/weather.interface';
 import { inputIsEmptyValidator } from '../utils/form-validators';
-import { FormErrorTextPipe } from '../pipes/form-error-text.pipe';
+import { ControlErrorsTextPipe } from '../pipes/control-errors-text.pipe';
 
 @Component({
   selector: 'app-weather-sidebar',
@@ -44,7 +44,7 @@ import { FormErrorTextPipe } from '../pipes/form-error-text.pipe';
     MatListItem,
     MatError,
     MatListSubheaderCssMatStyler,
-    FormErrorTextPipe,
+    ControlErrorsTextPipe,
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
