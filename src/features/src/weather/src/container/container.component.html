@@ -1,0 +1,56 @@
+<app-weather-sidebar
+  class="sidebar"
+  [geocodedCities]="geocodedCities()"
+  [geocodeCityNameApiError]="geocodeCityNameApiError()"
+  (selectCity)="selectCity($event)"
+  (searchCity)="searchCities($event)"
+  [favouriteCities]="favouriteCities()"
+></app-weather-sidebar>
+
+<div class="main" [class.loading]="loading()">
+  @let data = currentWeather();
+
+  @if (data && !data.error) {
+    <div class="actions">
+      <button
+        type="button"
+        mat-icon-button
+        [matTooltip]="
+          (data.isFavourite ? 'Remove From' : 'Add To') + ' Favourites'
+        "
+        [class.active]="data.isFavourite"
+        (click)="toggleFavourite()"
+      >
+        <mat-icon>star</mat-icon>
+      </button>
+    </div>
+
+    <app-weather-current-weather
+      [data]="data.current"
+    ></app-weather-current-weather>
+
+    <mat-divider></mat-divider>
+
+    <app-weather-forecast [data]="data.forecast"></app-weather-forecast>
+  }
+  @if (!data && !loading()) {
+    <div class="placeholder">
+      <img
+        class="placeholder"
+        src="assets/images/image.png"
+        alt="placeholder-image"
+      />
+    </div>
+  }
+
+  @if (loading()) {
+    <mat-spinner diameter="50"></mat-spinner>
+  }
+
+  @if (data?.error) {
+    <div class="placeholder">
+      Oops. Something went wrong on the weather provider's side. Please try
+      again later...
+    </div>
+  }
+</div>

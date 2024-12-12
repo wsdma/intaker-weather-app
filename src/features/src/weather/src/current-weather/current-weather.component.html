@@ -1,0 +1,21 @@
+@let currentWeather = data();
+
+<h2 class="header">Current Weather</h2>
+<div class="location">
+  {{ currentWeather.name }}, {{ currentWeather.country }}
+</div>
+<div class="temperature">
+  <img
+    [src]="'http://openweathermap.org/img/w/' + currentWeather.icon + '.png'"
+    alt=""
+  />
+  {{ currentWeather.temp }}&deg;C
+</div>
+
+<div class="description">
+  <div class="group">Feels like: {{ currentWeather.feelsLike }}&deg;C.</div>
+  <div class="group">Humidity: {{ currentWeather.humidity }}%.</div>
+  <div class="group">
+    {{ currentWeather.description | titlecase }}
+  </div>
+</div>

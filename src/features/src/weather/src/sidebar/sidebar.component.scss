@@ -1,0 +1,52 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background: var(--mat-sys-surface-variant);
+}
+
+mat-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.favourites {
+  .mat-mdc-subheader {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.5rem;
+    margin: 0 0 10px;
+
+    mat-icon {
+      color: gold;
+    }
+  }
+
+  @media (max-width: 768px) {
+    max-height: 200px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.empty-list-placeholder {
+  text-align: center;
+}
+
+.favourites {
+  .list {
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+      overflow-y: auto;
+    }
+  }
+
+  .item {
+    cursor: pointer;
+  }
+}

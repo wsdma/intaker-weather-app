@@ -1,0 +1,12 @@
+@let forecastData = data();
+
+<h2 class="header">Forecast</h2>
+<div class="forecast-wrapper">
+  @for (dayData of forecastData; track $index) {
+    <div class="group">
+      <div>{{ dayData.date | date: "dd MMMM" }}</div>
+      <div>{{ dayData.min }} / {{ dayData.max }} &deg;C</div>
+      <div>{{ dayData.description | titlecase }}</div>
+    </div>
+  }
+</div>

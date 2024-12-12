@@ -1,0 +1,48 @@
+@let cities = geocodedCities();
+@let favourites = favouriteCities();
+
+<mat-form-field>
+  <mat-label><mat-icon>search</mat-icon>Search city</mat-label>
+  <input
+    type="text"
+    matInput
+    [formControl]="control"
+    [matAutocomplete]="auto"
+    #inputEl
+  />
+  @if (control.errors && control.touched) {
+    <mat-error [innerHTML]="control.errors | formErrorText"></mat-error>
+  }
+  <mat-autocomplete #auto="matAutocomplete">
+    @for (city of cities; track city.id) {
+      <mat-option
+        (onSelectionChange)="
+          selectPredictedCity(
+            { lat: city.coord.lat, lon: city.coord.lon },
+            inputEl
+          )
+        "
+        >{{ city.name }}, {{ city.sys.country }}</mat-option
+      >
+    }
+  </mat-autocomplete>
+</mat-form-field>
+<div class="favourites">
+  <div mat-subheader>Favourites <mat-icon>star</mat-icon></div>
+  <mat-list class="list">
+    @for (city of favourites; track city.current.lat) {
+      <mat-list-item
+        class="item"
+        (click)="
+          selectCity.emit({
+            lat: city.current.lat,
+            lon: city.current.lon,
+          })
+        "
+        >{{ city.current.name }}, {{ city.current.country }}</mat-list-item
+      >
+    } @empty {
+      <div class="empty-list-placeholder">Nothing here yet...</div>
+    }
+  </mat-list>
+</div>
