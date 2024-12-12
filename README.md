@@ -46,8 +46,10 @@ ng test
 
 ## Troubleshooting
 
-While installing project dependencies you may face errors because of NGRX doesn't support Angluar v19 yet. To fix this please run:
+1. While installing project dependencies you may face errors because of NGRX doesn't support Angluar v19 yet. To fix this please run:
 
 ```bash
 npm install --force
 ```
+
+2. If tests are failing, please try to re-execute them
