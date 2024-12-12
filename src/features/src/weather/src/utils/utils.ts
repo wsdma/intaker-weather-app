@@ -4,7 +4,7 @@ import {
   ForecastDateData,
   WeatherForecastDto,
 } from '../interfaces/weather.interface';
-import { fromUnixTime, setHours } from 'date-fns';
+import { fromUnixTime, isToday, setHours } from 'date-fns';
 
 export const prepareCurrentWeatherData = (
   data: CurrentWeatherDto,
@@ -28,6 +28,7 @@ export const prepareForecastData = (
   const dataMap = data.list.reduce(
     (acc, item) => {
       const date = setHours(fromUnixTime(item.dt), 0).getTime();
+      if (isToday(date)) return acc;
       const curTempMin = Math.round(item.main.temp_min);
       const curTempMax = Math.round(item.main.temp_max);
 
