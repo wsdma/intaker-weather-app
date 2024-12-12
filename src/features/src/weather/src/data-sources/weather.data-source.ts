@@ -14,6 +14,8 @@ import {
 } from '../utils/utils';
 import { CityWeatherData } from '../interfaces/weather.interface';
 
+const CACHE_DATA_LIFETIME = 60; // in minutes
+
 interface WeatherDataSourceStage {
   loading: boolean;
   geocodedCities: City[];
@@ -108,7 +110,7 @@ export class WeatherDataSource extends ComponentStore<WeatherDataSourceStage> {
             differenceInMinutes(
               new Date(),
               this.state().weatherDataMap[geoId].loadedTimestamp,
-            ) > 61
+            ) > CACHE_DATA_LIFETIME
           );
         }),
         tap(() => {
